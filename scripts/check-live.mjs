@@ -16,6 +16,8 @@ try {
     const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
     expect(response?.status(), 'Public page must return HTTP 200').toBe(200);
     await expect(page).toHaveTitle('Apex Auto Captures | Car and Café Photography and Videography');
+    await expect.poll(() => page.locator('.site').evaluate(el => getComputedStyle(el).getPropertyValue('--site-accent').trim()), 'Published site must load the Emerald Editorial theme').toBe('#dfc69a');
+    await expect(page.locator('.cars h1')).toHaveCSS('font-family', /Georgia/);
     await expect(page.locator('.cars canvas')).toHaveAttribute('data-frame', '0', { timeout: 30_000 });
     await page.evaluate(() => window.scrollTo({ top: (document.querySelector('.hero-region').clientHeight - innerHeight) * .5, behavior: 'instant' }));
     await expect(page.locator('.cars canvas')).toHaveAttribute('data-frame', '96');

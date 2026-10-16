@@ -12,6 +12,10 @@ Build for hosting with `npm run build -- --base=./`, then publish the complete r
 
 `.github/workflows/verify-live.yml` runs `node scripts/check-live.mjs` on GitHub to check the actual public website at phone and desktop widths. It verifies HTTP status, original car scrubbing, scene selection, both galleries, booking validation, footer text, failed asset responses, and overflow. It does not send WhatsApp messages. For checking another deployment, set the non-secret `APEX_SITE_URL` variable when running the script.
 
+## Emerald Editorial refresh
+
+`premium.css` is imported after the original site styles. It defines deep emerald surfaces, ivory text, champagne accents, editorial headings, clearer controls, a paper booking section, and a static café interior backdrop. It uses existing photography and local fonts. Original car frames, supplied gallery/footer components, and booking behavior remain unchanged. The café animation remains pending its real source sequence.
+
 ## Run
 
 Use Node 22.12+ (validated with Node 24) and npm. Work in the existing `/workspace/Codex` checkout; cloud tasks are already isolated, so do not create a worktree unless explicitly requested.
