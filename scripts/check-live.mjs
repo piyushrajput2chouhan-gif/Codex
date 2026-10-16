@@ -20,10 +20,18 @@ try {
     await page.evaluate(() => window.scrollTo({ top: (document.querySelector('.hero-region').clientHeight - innerHeight) * .5, behavior: 'instant' }));
     await expect(page.locator('.cars canvas')).toHaveAttribute('data-frame', '96');
     const position = await page.evaluate(() => scrollY);
-    await page.locator('#hero-scenes-cafes').click();
+    const selectScene = async id => {
+      if (width !== 390) { await page.locator(id).click(); return; }
+      // Use a real touch at the visible tab. Locator click's automatic scrolling
+      // can move mobile pages even when a sticky tab is already on screen.
+      const box = await page.locator(id).boundingBox();
+      expect(box).not.toBeNull();
+      await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2);
+    };
+    await selectScene('#hero-scenes-cafes');
     await expect(page.getByRole('slider')).toHaveAttribute('aria-valuetext', 'Cafés');
     expect(await page.evaluate(() => scrollY)).toBe(position);
-    await page.locator('#hero-scenes-cars').click();
+    await selectScene('#hero-scenes-cars');
     await expect(page.getByRole('slider')).toHaveAttribute('aria-valuetext', 'Cars');
     await page.locator('#work').scrollIntoViewIfNeeded();
     await expect(page.locator('[data-board]')).toBeVisible();

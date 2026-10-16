@@ -27,4 +27,15 @@ jobs:
             npx playwright install --with-deps chromium
           fi
       - name: Check the live website
-        run: node scripts/check-live.mjs
+        run: |
+          set -o pipefail
+          node scripts/check-live.mjs 2>&1 | tee live-check.log
+      - name: Record verification results
+        if: always()
+        run: |
+          {
+            echo '## Live website verification'
+            echo '```text'
+            cat live-check.log 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
