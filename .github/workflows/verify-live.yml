@@ -1,0 +1,30 @@
+name: Verify live website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Check the public site on phone and desktop
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install locked browser test dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Ensure a browser is available
+        run: |
+          if ! command -v google-chrome && ! command -v google-chrome-stable && ! command -v chromium; then
+            npx playwright install --with-deps chromium
+          fi
+      - name: Check the live website
+        run: node scripts/check-live.mjs
