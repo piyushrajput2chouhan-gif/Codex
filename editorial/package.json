@@ -1,0 +1,18 @@
+{
+  "name": "apex-auto-captures-editorial",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/bodoni-moda": "5.3.0",
+    "@phosphor-icons/core": "2.1.1"
+  },
+  "devDependencies": {
+    "vite": "8.3.4"
+  }
+}
