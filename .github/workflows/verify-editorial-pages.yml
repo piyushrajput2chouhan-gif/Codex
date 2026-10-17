@@ -1,0 +1,22 @@
+name: Verify editorial Pages website
+
+on:
+  push:
+    branches: [website-download]
+    paths:
+      - '.github/workflows/verify-editorial-pages.yml'
+      - 'editorial/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Check the published editorial site
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v5
+      - name: Verify public page and supplied assets
+        run: python3 editorial/scripts/check_public_pages.py

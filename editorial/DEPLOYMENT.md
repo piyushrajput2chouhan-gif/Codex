@@ -10,7 +10,9 @@ GitHub Pages configuration:
 - Source: **Deploy from a branch**
 - Branch: **gh-pages**
 - Folder: **/ (root)**
-- Expected Pages URL, once deployment succeeds: `https://piyushrajput2chouhan-gif.github.io/Codex/`
+- Published Pages URL: `https://piyushrajput2chouhan-gif.github.io/Codex/`
+
+The editorial build deployed successfully in [GitHub Pages run 39022484075](https://github.com/piyushrajput2chouhan-gif/Codex/actions/runs/39022484075), for deployment commit `4515e5eb623ba0506764c029cef2af4cc414eaa7`.
 
 Repository Pages settings: https://github.com/piyushrajput2chouhan-gif/Codex/settings/pages
 

@@ -1,5 +1,11 @@
 # Apex Auto Captures
 
+## Editorial website
+
+The selected ivory editorial portfolio is published at **https://piyushrajput2chouhan-gif.github.io/Codex/**.
+
+Its editable source, development instructions, and design checks are in [`editorial/`](editorial/README.md). The `gh-pages` branch contains its production build. The GitHub Actions workflow **Verify editorial Pages website** checks the public page and original asset checksums after source updates. The previous downloadable archive below is retained.
+
 The downloadable site is `apex-website.zip`. It contains the supplied production application, photography, fonts, and the **Emerald Editorial** visual refresh, guided by UI/UX Pro Max.
 
 ## Design
