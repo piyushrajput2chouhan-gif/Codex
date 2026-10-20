@@ -1,0 +1,31 @@
+services:
+  grok-bot:
+    build: .
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      NODE_ENV: production
+      DATA_DIR: /app/data
+      APP_PASSWORD: ${APP_PASSWORD:?Inject APP_PASSWORD with at least 16 characters}
+      AI_API_KEY: ${AI_API_KEY:-}
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_MODEL: ${AI_MODEL:-}
+      APP_ALLOWED_HOSTS: ${APP_ALLOWED_HOSTS:-}
+    volumes:
+      - grok-bot-data:/app/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - SETUID
+      - SETGID
+
+volumes:
+  grok-bot-data:

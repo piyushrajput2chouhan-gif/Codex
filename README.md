@@ -1,5 +1,9 @@
 # Apex Auto Captures
 
+## Orbit task assistant
+
+The password-protected AI task app is in [`grok-bot/`](grok-bot/README.md). It supports saved tasks, scheduled AI text generation, and retained results. Follow the [Railway deployment steps for a phone browser](grok-bot/RAILWAY-PHONE.md) to deploy this branch with a persistent SQLite volume. Add passwords and API keys only through Railway environment variables; no credentials belong in Git.
+
 ## Editorial website
 
 The selected ivory editorial portfolio is published at **https://piyushrajput2chouhan-gif.github.io/Codex/**.
